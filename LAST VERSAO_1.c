@@ -36,15 +36,15 @@ void col_ball_butt(){
 
   switch(direcao_top){
 
-     case 0:     // direÁao reta p cima
+     case 0:     // dire√ßao reta p cima
      flag_mov=1;
      break;
 
-     case 1:     // direÁao incl esq
+     case 1:     // dire√ßao incl esq
      flag_mov=2;
      break;
 
-     case 2:     // direÁao incl dir
+     case 2:     // dire√ßao incl dir
      flag_mov=3;
      break;
 
@@ -64,15 +64,15 @@ void col_ball_top(){
 
   switch (direcao_butt){
 
-     case 0:     // direÁao reta
+     case 0:     // dire√ßao reta
      flag_mov=5;
      break;
 
-     case 1:     // direÁao incl esq
+     case 1:     // dire√ßao incl esq
      flag_mov=4;
      break;
 
-     case 2:     // direÁao incl dir
+     case 2:     // dire√ßao incl dir
      flag_mov=6;
      break;
 
@@ -90,15 +90,15 @@ void col_ball_left(){
 
   switch (direcao_right){
 
-     case 0:     // direÁao reta
+     case 0:     // dire√ßao reta
      flag_mov=7;
      break;
 
-     case 1:     // direÁao incl esq
+     case 1:     // dire√ßao incl esq
      flag_mov=8;
      break;
 
-     case 2:     // direÁao incl dir
+     case 2:     // dire√ßao incl dir
      flag_mov=9;
      break;
 
@@ -116,15 +116,15 @@ void col_ball_right(){
 
   switch (direcao_left){
 
-     case 0:     // direÁao reta
+     case 0:     // dire√ßao reta
      flag_mov=10;
      break;
 
-     case 1:     // direÁao incl esq
+     case 1:     // dire√ßao incl esq
      flag_mov=11;
      break;
 
-     case 2:     // direÁao incl dir
+     case 2:     // dire√ßao incl dir
      flag_mov=12;
      break;
 
@@ -218,62 +218,46 @@ void col_ball_right(){
 // fim movimento -----------------
 
 
-// colisıes ---------------------
+// colis√µes ---------------------
 
 void colisoes(){
  
 
 // colisao pad------------
-  if(ball_pd==64){
+  
+if(ball_pd==64){
+unsigned bit value_ball_pb= 0b10000000;
+unsigned bit value_pad_pb = 0b11000000;
 
-        if(ball_pb=0b10000000 && pad_pb=0b11000000){
-        colision_flag=1;
+for (i=0; i<=6; i++){
+	
+	if((ball_pb == value_ball_pb >>i) && (pad_pb == value_pad_pb >>i) ){
+	    
+		colision_flag=1;
+        col_ball_butt();
+        game_over=0;	
+	}
+	
+}
+else
+unsigned bit value_ball_pb= 0b01000000;
+unsigned bit value_pad_pb = 0b11000000;
+
+for (i=0; i<=6; i++){
+	
+	if((ball_pb == value_ball_pb >>i) && (pad_pb == value_pad_pb >>i) ){
+		
+		colision_flag=1;
         col_ball_butt();
         game_over=0;
-        }
-        else
-        if((ball_pb=0b01000000 && pad_pb=0b11000000) || (ball_pb=0b01000000 && pad_pb=0b01100000)){
-        colision_flag=1;
-        col_ball_butt();
-        game_over=0;
-        }
-        else
-        if((ball_pb=0b00100000 && pad_pb=0b01100000) || (ball_pb=0b00100000 && pad_pb=0b00110000)){
-        colision_flag=1;
-        col_ball_butt();
-        game_over=0;
-        }
-        else
-        if((ball_pb=0b00010000 && pad_pb=0b00110000) || (ball_pb=0b00010000 && pad_pb=0b00011000)){
-        colision_flag=1;
-        col_ball_butt();
-        game_over=0;
-        }
-        else
-        if((ball_pb=0b00001000 && pad_pb=0b00011000) || (ball_pb=0b000010000 && pad_pb=0b00001100)){
-        colision_flag=1;
-        col_ball_butt();
-        game_over=0;
-        }
-        else
-        if((ball_pb=0b00000100 && pad_pb=0b00001100) || (ball_pb=0b000001000 && pad_pb=0b00000110)){
-        colision_flag=1;
-        col_ball_butt();
-        game_over=0;
-        }
-        else
-        if((ball_pb=0b00000010 && pad_pb=0b00000110) || (ball_pb=0b000000100 && pad_pb=0b00000011)){
-        colision_flag=1;
-        col_ball_butt();
-        game_over=0;
-        }
-        else
-        if(ball_pb=0b00000001 && pad_pb=0b00000011){
-        colision_flag=1;
-        col_ball_butt();
-        game_over=0;
-        }
-        else  game_over++;
+		
+	}
+	
+}
+
+else
+game_over++;
+
 
 }
 // fim pad---------------
